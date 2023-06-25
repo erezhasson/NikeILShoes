@@ -26,7 +26,6 @@ class SizeButton:
 
 
 # Global Variables
-TOKEN = "6149915835:AAFA5SXjXN_imqbzfKIedQ2xOibCFWfvk3E"
 selectedSizes: set[SizeButton] = set()
 interval: float = 5
 
@@ -208,7 +207,7 @@ def main() -> None:
     """Start the bot."""
     # Create the Updater and pass it your bot's token.
     updater = Updater(
-        token=TOKEN, use_context=True)
+        token="6149915835:AAFA5SXjXN_imqbzfKIedQ2xOibCFWfvk3E", use_context=True)
 
     updater.bot.setMyCommands([
         BotCommand('start', 'start seraching for shoe sizes'),
@@ -234,11 +233,7 @@ def main() -> None:
     dispatcher.add_handler(InlineQueryHandler(inlinequery))
 
     # Start the Bot
-    # updater.start_polling()
-    updater.start_webhook(listen="0.0.0.0",
-                            port=int(3000),
-                            url_path=TOKEN,
-                            webhook_url="https://colorful-sheath-dress-pig.cyclic.app/" + TOKEN
+    updater.start_polling()
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since
