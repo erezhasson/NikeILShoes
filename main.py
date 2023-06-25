@@ -157,7 +157,10 @@ def size_button(update: Update, context: CallbackContext) -> None:
     query = update.callback_query
 
     if (float(query.data)):
-        selectedSizes.add(query.data)
+        if (selectedSizes.__contains__(query.data)):
+            selectedSizes.remove(query.data)
+        else:
+            selectedSizes.add(query.data)
         print(selectedSizes)
 
     query.answer()
